@@ -8,10 +8,8 @@ const writeFile = (file) => {
     if (error) throw error;
   });
 };
-const requestedSite = request(site, (error, response, body)=>{
+request(site, (error, response, body)=>{
   console.log("error: ", error);
   console.log("response: ", response && response.statusCode);
-  return body;
+  writeFile(body);
 });
-const data = new Uint8Array(Buffer.from(requestedSite, 'utf8'));
-writeFile(data);
